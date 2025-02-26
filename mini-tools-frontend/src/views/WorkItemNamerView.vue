@@ -3,18 +3,13 @@ import WorkItemNamer from '@/components/WorkItemNamer.vue';
 </script>
 
 <template>
-<div>
-  Work Item Namer Tool
+<div class="work-item-namer-view">
   <WorkItemNamer />
 </div>
 </template>
 
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
+<style scoped>
+.work-item-namer-view {
+  margin: 5%;
 }
 </style>

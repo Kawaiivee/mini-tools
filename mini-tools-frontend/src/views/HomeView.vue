@@ -4,6 +4,6 @@ import WorkItemNamer from '@/components/WorkItemNamer.vue';
 
 <template>
   <main>
-    Home View
+    Mini Tools
   </main>
 </template>
