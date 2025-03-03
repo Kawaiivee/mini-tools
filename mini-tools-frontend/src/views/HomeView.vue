@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WorkItemNamer from '@/components/WorkItemNamer.vue';
+import WorkItemNamer from '@/components/WorkItemFormatter.vue';
 </script>
 
 <template>

@@ -11,11 +11,11 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/work-item-namer',
-      name: 'work-item-namer',
-      component: () => import('../views/WorkItemNamerView.vue'),  // lazy load all that are not home
+      path: '/work-item-formatter',
+      name: 'work-item-formatter',
+      component: () => import('../views/WorkItemFormatterView.vue'),  // lazy load all that are not home
     },
   ],
 })
 
-export default router
+export default router;
