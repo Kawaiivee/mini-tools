@@ -11,31 +11,27 @@ const currentTool = ref("Home");
 
 <template>
 <v-app>
-  <v-card>
-    <v-layout>
 
-      <v-app-bar color="primary">
-        <v-toolbar-title>Mini Tools</v-toolbar-title>
-        <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      </v-app-bar>
+  <v-app-bar color="primary">
+    <v-toolbar-title>Mini Tools</v-toolbar-title>
+    <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+  </v-app-bar>
 
-      <v-navigation-drawer
-        v-model="drawer"
-        class="dynamic-drawer"
-        location="right"
-        temporary>
-        <v-list :drawer="drawer" density="compact" nav>
-          <v-list-item link prepend-icon="mdi-home" value="Home"><v-tooltip activator="parent" text="Home"></v-tooltip></v-list-item>
-          <v-list-item link prepend-icon="mdi-clipboard" value="Work Item Formatter"><v-tooltip activator="parent" text="Work Item Formatter"></v-tooltip></v-list-item>
-        </v-list>
-      </v-navigation-drawer>
+  <v-navigation-drawer
+    v-model="drawer"
+    class="dynamic-drawer"
+    location="right"
+    temporary>
+    <v-list :drawer="drawer" density="compact" nav>
+      <v-list-item link prepend-icon="mdi-home" value="Home" to="/"><v-tooltip activator="parent" text="Home"></v-tooltip></v-list-item>
+      <v-list-item link prepend-icon="mdi-clipboard" value="Work Item Formatter" to="/work-item-formatter"><v-tooltip activator="parent" text="Work Item Formatter"></v-tooltip></v-list-item>
+    </v-list>
+  </v-navigation-drawer>
 
-      <v-main style="height: 100vh;">
-        Main Content Here
-      </v-main>
+  <v-main style="height: 100vh;">
+    <router-view />
+  </v-main>
 
-    </v-layout>
-  </v-card>
 </v-app>
 </template>
 
