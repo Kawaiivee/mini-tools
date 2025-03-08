@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';  //check local storage for a current default author...or use pinia
+import { ref, watch } from 'vue';  //check local storage for a current default author...or use pinia
 
 enum WorkItemType {
   Feature = "Feature",
@@ -11,20 +11,14 @@ enum WorkItemType {
   Spike = "Spike",
 }
 
-const workItemType = ref(null);
-const workItemNumber = ref(null);
-const workItemName = ref(null);
-const pullRequestNumber = ref(4);
+const workItemType = ref(WorkItemType.Feature);
+const workItemNumber = ref(0);
+const workItemName = ref('');
+const pullRequestNumber = ref(0);
 
 const workItemFormatted = ref("");
 const branchFormatted = ref("");
 const pullRequestFormatted = ref("");
-
-const handleFormatButtonClicked = () => {
-  workItemFormatted.value = refactorWorkItem();
-  branchFormatted.value = refactorBranch();
-  pullRequestFormatted.value = refactorPullRequest();
-};
 
 const refactorWorkItem = () => {
   let nameDelimited = '';
@@ -49,6 +43,12 @@ const refactorPullRequest = () => {
   });
   return `PR:[${pullRequestNumber.value ? pullRequestNumber.value : '_'}] #${workItemNumber.value} ${workItemType.value} - ${nameDelimited}`;
 };
+
+watch([workItemType, workItemNumber, pullRequestNumber, workItemName], () => {
+  workItemFormatted.value = refactorWorkItem();
+  branchFormatted.value = refactorBranch();
+  pullRequestFormatted.value = refactorPullRequest();
+});
 
 </script>
 
@@ -95,7 +95,6 @@ const refactorPullRequest = () => {
       label="Work Item Name"
       type="text"
     ></v-text-field>
-    <v-btn variant="tonal" @click="() => handleFormatButtonClicked()">Format</v-btn>
     <v-table>
     <tbody>
       <tr>
